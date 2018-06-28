@@ -1,0 +1,4 @@
+DATABASEURI='localhost'
+DB_NAME='yingdi'
+DECK_COLLECTION_NAME='hearthstone'
+ARTICLE_COLLECTION_NAME='hsArticle'

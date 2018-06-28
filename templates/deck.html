@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+</head>
+<body>
+ <title>卡组列表</title>
+    {% for deck in decks %}
+        <p>{{ deck.name }}<a href={{ deck.imgurl }}>查看卡组</a></p>
+        <p>{{ deck.code }}</p>
+    {% endfor %}
+
+</body>
+</html>
