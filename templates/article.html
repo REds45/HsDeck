@@ -2,12 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>文章</title>
+    <title>文章列表</title>
 </head>
 <body>
 {% for article in articles %}
-    <h3>{{ article.articleNmae }}</h3>
-    <p><a href={{ article.articleUrl }}>查看文章</a></p>
+    <h3><a href={{ article.articleUrl }}>{{ article.articleNmae }}</a></h3>
     {% for deck in article.decks %}
         <h4>{{ deck.name }}</h4><a href={{ deck.imgurl }}>查看图片</a>
         <p>{{ deck.code }}</p>

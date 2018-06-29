@@ -48,7 +48,7 @@ class Article_DB(DBClient):
         '''
         :return:返回数据库中的文章
         '''
-        return self.collection.find()
+        return self.collection.find().limit(30).sort('articleID',-1)
 
 
     def save_article(self,item):
