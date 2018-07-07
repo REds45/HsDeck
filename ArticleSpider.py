@@ -27,9 +27,8 @@ def get_article_list():
 def get_deck_by_api(list):
     for id in list:
         url = 'https://www.iyingdi.cn/article/{}'.format(id)
-        heades = {
-            'User - Agent': 'Mozilla / 5.0(Windows NT 10.0;WOW64) AppleWebKit / 537.36(KHTML, likeGecko) Chrome / 66.0.3359.139Safari / 537.36'}
-        response = requests.get(url, headers=heades)
+
+        response = requests.get(url)
         try:
             article = json.loads(json.loads(response.text)['article']['content'])
             decks = []

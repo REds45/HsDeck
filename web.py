@@ -1,6 +1,7 @@
 from flask import Flask
 from flask import render_template
 from DB import Deck_DB,Article_DB
+import json
 app=Flask(__name__)
 app.config['DEBUG']=True
 
@@ -24,4 +25,16 @@ def Article():
     articles=articledb.get_all_article()
 
     return render_template('article.html',articles=articles)
-app.run(host='0.0.0.0',port=80,threaded=True)
+@app.route('/test')
+def api():
+    decklist=deckdb.get_all_deck()
+    list=[deck for deck in decklist]
+    return json.dumps(list)
+
+def run_app():
+    app.run(host='0.0.0.0', port=80, threaded=True)
+
+if __name__=='__main__':
+    app.run(host='0.0.0.0', port=80, threaded=True)
+
+

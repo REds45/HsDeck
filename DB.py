@@ -28,7 +28,8 @@ class Deck_DB(DBClient):
         '''
         :return:返回数据库中所有套牌的信息
         '''
-        return self.collection.find()
+        return self.collection.find({},{'_id':0})
+
 
     def save_deck(self,item):
         '''
