@@ -33,7 +33,7 @@ def api():
     list=[deck for deck in decklist]
     return json.dumps(list)
 
-@app.route('update')
+@app.route('/update')
 def update():
     run.open_spider()
 
