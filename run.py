@@ -1,6 +1,6 @@
 from app import app
 from multiprocessing import Process
-from spiders import async_spider,DeckSpiders
+from spiders import async_spider,deck_spiders
 import time
 
 
@@ -12,7 +12,7 @@ def article_spider():
 
 def deck_spider():
     while True:
-        DeckSpiders.run_spider()
+        deck_spiders.run_spider()
         time.sleep(86400)
 
 
