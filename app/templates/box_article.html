@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>炉石盒子卡组推介</title>
+</head>
+<body>
+{% for news in list %}
+    <h3><a href={{ url_for('box_article_detail',id=news.id) }}>{{ news.title }}</a></h3>
+    <p>{{ news.stime }}</p>
+{% endfor %}
+
+
+</body>
+</html>

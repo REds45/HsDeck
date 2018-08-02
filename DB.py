@@ -15,6 +15,7 @@ class DBClient():
     def __del__(self):
         self.client.close()
 
+
 class Deck_DB(DBClient):
     def __init__(self):
         super().__init__(settings.DECK_COLLECTION_NAME)
@@ -30,6 +31,8 @@ class Deck_DB(DBClient):
         '''
         return self.collection.find({},{'_id':0})
 
+    def drop_all_item(self):
+        self.collection.delete_many({})
 
     def save_deck(self,item):
         '''
