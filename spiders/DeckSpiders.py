@@ -3,6 +3,9 @@ from bs4 import BeautifulSoup
 import json
 from DB import Deck_DB
 
+'''
+爬取旅法师营地 炉石传说卡族库
+'''
 
 #获取套牌列表
 def get_deck_list():
@@ -34,6 +37,8 @@ def parse_deck(deck_list):
 
 def run_spider():
     mongo = Deck_DB()
+    #先清空数据库中保存的卡组信息
+    mongo.drop_all_item()
     for list in get_deck_list():
         for deck in parse_deck(list):
             mongo.save_deck(deck)

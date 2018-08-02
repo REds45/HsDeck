@@ -1,6 +1,12 @@
 import requests
 import json
 from DB import Article_DB
+import asyncio
+import aiohttp
+
+'''
+爬取旅法师营地炉石传说板块中的卡组推介相关的文章
+'''
 
 # 获取最新30篇文章的ID
 def get_article_list():
@@ -27,7 +33,6 @@ def get_article_list():
 def get_deck_by_api(list):
     for id in list:
         url = 'https://www.iyingdi.cn/article/{}'.format(id)
-
         response = requests.get(url)
         try:
             article = json.loads(json.loads(response.text)['article']['content'])
@@ -41,6 +46,7 @@ def get_deck_by_api(list):
                     decks.append(item)
             if decks != []:
                 dict = {
+                    'from':'旅法师营地',
                     'articleNmae':json.loads(response.text)['article']['title'],
                     'articleID': id,
                     'articleUrl': 'https://www.iyingdi.cn/web/article/hearthstone/{}'.format(id),
@@ -57,7 +63,15 @@ def run_spider():
         mongodb.save_article(i)
 
 if __name__=='__main__':
-    run_spider()
+    list=get_article_list()
+    import time
+    start_time=time.time()
+    for i in get_deck_by_api(list):
+        print(i)
+
+
+
+
 
 
 
